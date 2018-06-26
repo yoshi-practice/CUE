@@ -13,7 +13,7 @@
         android:layout_height="70dp"
         android:background="@android:color/black"
         android:gravity="center"
-        android:text="LOG IN"
+        android:text="BANK"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 
@@ -136,5 +136,14 @@
                 android:textSize="30sp" />
         </LinearLayout>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="110dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="99dp"
+        app:srcCompat="@drawable/assets" />
 
 </RelativeLayout>

@@ -7,6 +7,15 @@
     tools:context=".HealthActivity">
 
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="110dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="99dp"
+        app:srcCompat="@drawable/assets" />
+
     <TextView
         android:id="@+id/textView9"
         android:layout_width="match_parent"
