@@ -1,5 +1,6 @@
 package com.developer.yoshi1125hisa.healthcare;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -11,7 +12,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
@@ -27,6 +33,7 @@ import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ViewPortHandler;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,6 +52,10 @@ public class HealthActivity extends AppCompatActivity implements SensorEventList
     private Sensor stepCntSensor;
     private int stepcount = 0;
     private int stepcount2 = 0;
+
+    final DatabaseReference sendsRef = FirebaseDatabase.getInstance().getReference("count");
+
+    ListView listView;
 
 
 
@@ -69,6 +80,76 @@ public class HealthActivity extends AppCompatActivity implements SensorEventList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health);
+
+        final ListView listView = findViewById(R.id.listView);
+        final View emptyView = findViewById(R.id.empty);
+        listView.setEmptyView(emptyView);
+        final DatabaseReference sendsRef = FirebaseDatabase.getInstance().getReference("walkCount");
+
+        final Context context = getApplicationContext();
+
+
+        // リスト項目とListViewを対応付けるArrayAdapterを用意する
+        final ArrayAdapter<WalkCounter> telArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, new ArrayList<WalkCounter>());
+        listView.setAdapter(telArrayAdapter);
+
+
+        // リスト項目を長押しクリックした時の処理
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            /**
+             * @param parent   ListView
+             * @param view     選択した項目
+             * @param position 選択した項目の添え字
+             * @param id       選択した項目のID
+             */
+
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                final WalkCounter item = telArrayAdapter.getItem(position);
+                if (item != null && item.key != null) {
+                    sendsRef.child(item.key).removeValue();
+                }
+                return false;
+            }
+
+
+        });
+
+
+
+        sendsRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, String s) {
+                final WalkCounter walkCount = dataSnapshot.getValue(WalkCounter.class);
+                if (walkCount != null) {
+                    walkCount.key = dataSnapshot.getKey();
+                }
+                telArrayAdapter.add(walkCount);
+            }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, String s) {
+                // Changed
+            }
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                final WalkCounter walkCount = dataSnapshot.getValue(WalkCounter.class);
+                if (walkCount != null) {
+                    walkCount.key = dataSnapshot.getKey();
+                }
+                telArrayAdapter.remove(walkCount);
+               // StyleableToast.makeText(context, "削除しました。", Toast.LENGTH_SHORT, R.style.mytoast).show();
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, String s) {
+                // Moved
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+               // StyleableToast.makeText(context, "エラーが発生しました。", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                // Error
+            }
+        });
 
 
         //センサーマネージャを取得
