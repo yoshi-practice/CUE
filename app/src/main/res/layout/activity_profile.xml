@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        app:srcCompat="@drawable/cue" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@android:color/black"
+        android:gravity="center"
+        android:text="PROFILE"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="406dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/shape_black"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="プロフィール"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@mipmap/ic_launcher_round" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_corner"
+            android:gravity="center"
+            android:onClick="walk"
+            android:text="歩数"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_corner"
+            android:gravity="center"
+            android:onClick="sleep"
+            android:text="睡眠"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_corner"
+            android:gravity="center"
+            android:onClick="logout"
+            android:text="ログアウト"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</RelativeLayout>

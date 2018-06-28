@@ -6,6 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".SleepActivity">
 
+
+    <Button
+
+        android:id="@+id/post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/button_corner"
+        android:gravity="center"
+        android:onClick="send"
+        android:text="送信"
+        android:textColor="@android:color/white" />
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
@@ -29,32 +46,33 @@
         android:id="@+id/textView8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/post"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="睡眠時間：5時間"
         android:textColor="@android:color/black"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="340dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="110dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/shape_black"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/bar_chart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
-            android:layout_marginBottom="30dp" />
+            android:layout_margin="5dp"
+            android:layout_weight="1">
+
+        </com.github.mikephil.charting.charts.BarChart>
 
     </LinearLayout>
-
 </RelativeLayout>

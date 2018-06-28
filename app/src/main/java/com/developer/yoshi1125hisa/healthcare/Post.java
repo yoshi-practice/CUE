@@ -1,35 +1,32 @@
 package com.developer.yoshi1125hisa.healthcare;
 
+
 import java.io.Serializable;
 
-public class Post implements Serializable{
+public class Post implements Serializable {
 
-    private String walkCount;
-    private String sleepTime;
+    private String walking;
+    private String sleeping;
+    private String gender;
 
-    public Post(String walkCount,String sleepTime) {
-        this.walkCount = walkCount;
-        this.sleepTime = sleepTime;
+    public Post(){
 
     }
 
-    public String getWalkCount() {
-        return walkCount;
+    public Post(String walking,String gender) {
+        this.walking = walking;
+        this.gender = gender;
+
     }
 
-    public void setWalkCount(String walkCount){
-        this.walkCount = walkCount;
-    }
 
-    public String getSleepTime() {
-        return sleepTime;
-    }
+    public String getWalking() { return  walking; }
+    public void setWalking(String walking){ this.walking = walking; }
 
-    public void setSleepTime(String sleepTime){
-        this.sleepTime = sleepTime;
-    }
+    public String getSleeping() { return  sleeping; }
+    public void setSleeping(String sleeping){ this.sleeping = sleeping; }
 
+    public String getGender() { return  gender; }
+    public void setGender(String gender){ this.gender = gender; }
 
 }
-
-

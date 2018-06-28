@@ -30,7 +30,7 @@ public class PostAdapter extends ArrayAdapter<Post> {
 
 
         @Override
-        public View getView ( int position, View convertView, ViewGroup parent) {
+        public View getView (int position, View convertView, ViewGroup parent) {
             Post item = getItem(position);
             final ViewHolder viewHolder;
 
@@ -40,17 +40,19 @@ public class PostAdapter extends ArrayAdapter<Post> {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.listview_item_post, parent, false);
 
                 viewHolder = new ViewHolder();
-              viewHolder.walkCount = convertView.findViewById(R.id.walkCount);
+                viewHolder.walkingText = convertView.findViewById(R.id.walking);
+                viewHolder.sleepingText = convertView.findViewById(R.id.sleeping);
               convertView.setTag(viewHolder);
             }
 
-            viewHolder.walkCount.setText(item.getWalkCount());
+            viewHolder.walkingText.setText(item.getWalking());
+            viewHolder.sleepingText.setText(item.getSleeping());
 
             return convertView;
         }
     static class ViewHolder{
 
-    TextView walkCount;
-   }
+        TextView walkingText;
+        TextView sleepingText;
 }
-
+}

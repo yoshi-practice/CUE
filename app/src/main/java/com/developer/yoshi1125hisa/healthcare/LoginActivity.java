@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
 
     private void changeActivity() {
-        Intent intent = new Intent(LoginActivity.this, LogoutActivity.class);
+        Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
         startActivity(intent);
     }
 
@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 firebaseAuthWithGoogle(account);
             } else {
                 System.out.println(result.getStatus());
-                Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "System Error", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -128,15 +128,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
 
-    public void move(View v){
-        Intent intent = new Intent(this,BankActivity.class);
-        startActivity(intent);
-    }
-
-    public void move2(View v){
-        Intent intent = new Intent(this,HealthActivity.class);
-        startActivity(intent);
-    }
 
     }
 

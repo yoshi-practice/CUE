@@ -55,7 +55,7 @@
             android:layout_marginRight="30dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="10,000円"
+            android:text="10,000 円"
             android:textColor="@android:color/black"
             android:textSize="40sp" />
 
@@ -68,6 +68,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/button_corner"
             android:gravity="center"
+            android:onClick="pull"
             android:text="引き出す"
             android:textColor="@android:color/white" />
 
@@ -105,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center"
-                android:text="44%"
+                android:text="44 %"
                 android:textColor="@android:color/black"
                 android:textSize="30sp" />
         </LinearLayout>
